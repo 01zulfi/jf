@@ -13,6 +13,7 @@ func main() {
 	args := os.Args[1:]
 	if len(args) == 0 {
 		fmt.Println("No arguments provided")
+		return
 	}
 
 	text := args[0]
@@ -21,6 +22,7 @@ func main() {
 	err := json.Indent(&out, []byte(text), "", "  ")
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	err = utils.SetClipboard(out.String())
